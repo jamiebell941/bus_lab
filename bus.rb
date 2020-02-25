@@ -31,19 +31,22 @@ class Bus
   end
 
   def pick_up_from_stop(stop)
-    @bus_stop1.queue.each() do |passenger|
+    stop.queue.each() do |passenger|
+      # binding.pry
       @passengers.push(passenger)
     end
 
-    @bus_stop1.empty_bus_stop()
+    stop.empty_bus_stop()
 
   end
 end
 
 class BusStop
 
-  def initialize()
-    @queue = []
+  attr_accessor :queue
+
+  def initialize(queue=[])
+    @queue = queue
   end
 
   def queue_count
@@ -55,7 +58,7 @@ class BusStop
   end
 
   def empty_bus_stop
-    @bus_stop1.queue = []
+    @queue = []
   end
 
 end
